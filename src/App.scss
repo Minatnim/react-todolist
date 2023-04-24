@@ -1,0 +1,35 @@
+$primary: #db4c3f;
+$grey: rgb(234, 234, 234);
+$sidebar-width: 300px;
+$header-height: 60px;
+
+.container {
+  display: grid;
+  grid-template-rows: 50px calc(100vh - 50px);
+  grid-template-columns: 200px calc(100vw - 200px);
+}
+.header {
+  background-color: $primary;
+  grid-column: 1/3; //start/end
+  grid-row: 1/2;
+  font-size: 24px;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 0.5rem 2rem;
+  color: $grey;
+  & > span {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+  }
+}
+.sidebar {
+  background-color: aquamarine;
+  grid-row: 2/3;
+  grid-column: 1/2; //start/end
+}
+.content {
+  grid-column: 2/3; //start/end
+  grid-row: 2/3;
+}

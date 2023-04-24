@@ -1,25 +1,19 @@
-import logo from './logo.svg';
-import './App.css';
+// import logo from "./logo.svg";
+import "./App.scss";
+import { FaHome } from "react-icons/fa";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+    <div className="container">
+      <header className="header">
+        <span>
+          <FaHome />
+        </span>
+        <div>CC-Todolist</div>
       </header>
+      <aside className="sidebar">Sidebar</aside>
+      <main className="content">Content</main>
     </div>
   );
 }
-
 export default App;
