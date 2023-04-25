@@ -5,7 +5,7 @@ export function Header() {
       <span>
         <FaHome />
       </span>
-      <div>CC-Todolist</div>
+      <div>CC-Todolist MINATNIM</div>
     </header>
   );
 }
