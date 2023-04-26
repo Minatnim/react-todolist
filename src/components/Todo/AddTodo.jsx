@@ -24,6 +24,7 @@ export function AddTodo({ onAddTodo }) {
           submitText="Add task"
           onSetIsShowForm={setIsAddMode}
           onAddTodo={onAddTodo}
+          // todo == undefined
         />
       )}
     </>

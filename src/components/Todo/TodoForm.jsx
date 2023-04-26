@@ -12,22 +12,25 @@ export function TodoForm({
   onEditTodo,
 }) {
   // # 1 : Logic Section
-  const [task, setTask] = useState(todo.task || "");
+  const [task, setTask] = useState(todo?.task || "");
   const [isError, setIsError] = useState(false);
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
     // validate
+    // case 1 : not valid
+    // case 2A : valid-create
+    // case 2B : valid-update
     if (task.trim() === "") {
       setIsError(true);
       return;
-    } else {
-      // validate passed , execute addTodo
-      // onAddTodo(task) // from <TodoContent/>
-      onEditTodo(todo.id, task); // send => 1.newTask 2. todoId
     }
 
+    // validate passed , execute addTodo
+    // onAddTodo(task) // from <TodoContent/>
+    if (todo) onEditTodo(todo.id, { task }); // send => 1.newTask 2. todoId
+    else onAddTodo(task);
     // set back to normal mode
     onSetIsShowForm(false);
   };
