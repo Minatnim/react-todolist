@@ -1,12 +1,21 @@
 import styles from "./TodoForm.module.scss";
 import React, { useState } from "react";
+import PropTypes from "prop-types";
+
+TodoForm.propTypes = {
+  submitText: PropTypes.string.isRequired,
+  onSetIsShowForm: PropTypes.func.isRequired,
+  onAddTodo: PropTypes.func,
+  onEditTodo: PropTypes.func,
+  todo: PropTypes.oneOfType([PropTypes.object]), // undefined , {id : number | string , task : string, status : bool, due_date:string}
+};
 
 // TodoForm => call in 2 Mode
 // Mode-1 : Add
 // Mode-2 : Edit
 export function TodoForm({
-  onSetIsShowForm,
   submitText,
+  onSetIsShowForm,
   todo,
   onAddTodo,
   onEditTodo,
