@@ -16,18 +16,36 @@ function App() {
   useEffect(() => {
     // Run After DID MOUNT (เกิดแล้ว)
 
-    axios({
-      method: "get",
-      url: "http://localhost:8080/todos",
-    })
-      .then((response) => {
+    //   axios({
+    //     method: "get",
+    //     url: "http://localhost:8080/todos",
+    //   })
+    //     .then((response) => {
+    //       let todoList = response.data.todos;
+    //       setTodos(todoList);
+    //       setFilterList(todoList);
+    //     })
+    //     .catch((err) => {
+    //       console.log(err.response.status);
+    //     });
+    // }, []);
+
+    async function fetchAllTodo() {
+      try {
+        // let response = await axios({
+        //   method: "get",
+        //   url: "http://localhost:8080/todos",
+        // });
+        let response = await axios.get("http://localhost:8080/todos");
         let todoList = response.data.todos;
         setTodos(todoList);
         setFilterList(todoList);
-      })
-      .catch((err) => {
-        console.log(err.response.status);
-      });
+      } catch (error) {
+        console.log(error.response.status);
+      }
+    }
+
+    fetchAllTodo();
   }, []);
 
   // ## LOGIC : FN ต่างๆ
