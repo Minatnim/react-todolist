@@ -17,15 +17,15 @@ export function TodoItem({ todo, onEditTodo, onDeleteTodo }) {
   const [isEdit, setIsEdit] = useState(false);
   // console.log(todo.id)
 
-  const updateTodoStatus = async () => {
+  const updateTodo = async (oldTodo, updateObj) => {
     try {
-      let updateTodo = { ...todo, status: !todo.status };
+      let updateTodo = { ...oldTodo, ...updateObj };
       let response = await axios.put(
         `http://localhost:8080/todos/${todo.id}`,
         updateTodo
       );
       let updatedTodo = response.data.todo;
-      onEditTodo(updatedTodo.id, { status: updateTodo.status });
+      onEditTodo(updatedTodo.id, updatedTodo);
     } catch (error) {
       console.log(error.response.status);
     }
@@ -53,7 +53,7 @@ export function TodoItem({ todo, onEditTodo, onDeleteTodo }) {
         <li className={styles.todo__item__container}>
           <div
             className={styles.checkbox__container}
-            onClick={updateTodoStatus}
+            onClick={() => updateTodo(todo, { status: !todo.status })}
           >
             <HiCheck className={checkboxStyle} />
           </div>
@@ -80,7 +80,8 @@ export function TodoItem({ todo, onEditTodo, onDeleteTodo }) {
           submitText="Edit task"
           onSetIsShowForm={setIsEdit}
           // oldTask={todo.task}
-          onEditTodo={onEditTodo}
+          // onEditTodo={onEditTodo}
+          updateTodo={updateTodo}
           todo={todo}
         />
       )}

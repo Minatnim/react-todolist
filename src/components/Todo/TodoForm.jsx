@@ -6,7 +6,7 @@ import PropTypes from "prop-types";
 TodoForm.propTypes = {
   submitText: PropTypes.string.isRequired,
   onSetIsShowForm: PropTypes.func.isRequired,
-  onEditTodo: PropTypes.func,
+
   todo: PropTypes.oneOfType([PropTypes.object]), // undefined , {id : number | string , task : string, status : bool, due_date:string}
 };
 
@@ -17,7 +17,7 @@ export function TodoForm({
   submitText,
   onSetIsShowForm,
   todo,
-  onEditTodo,
+
   setTodos,
   setFilterList,
 }) {
@@ -55,7 +55,8 @@ export function TodoForm({
     // validate passed , execute addTodo
     // onAddTodo(task) // from <TodoContent/>
     if (todo) {
-      onEditTodo(todo.id, { task }); // send => 1.newTask 2. todoId
+      updateTodo(todo, { task });
+      // onEditTodo(todo.id, { task }); // send => 1.newTask 2. todoId
     } else {
       let now = new Date().toISOString().slice(0, 10);
       let todoObj = { task: task, status: false, date: now };
